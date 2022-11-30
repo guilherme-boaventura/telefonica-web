@@ -1,0 +1,4 @@
+<input id='entrada' [(ngModel)]="id" type="text" name="id" >
+<button (click)="obterPlano()" style="height: 15px;">pesquisar</button>
+<h1 id='nome-plano' class='nome-plano' *ngIf="plano != null && plano != undefined">{{plano.nome}}</h1>
+<h1 *ngIf="plano != null && plano != undefined">{{plano.valor}}</h1>
