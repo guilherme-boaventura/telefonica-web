@@ -1,0 +1,19 @@
+{
+  "planos": [
+    {
+      "id": "1",
+      "valor": "79",
+      "nome": "Start"
+    },
+    {
+      "id": "2",
+      "valor": "99",
+      "nome": "Mix"
+    },
+    {
+      "id": "3",
+      "valor": "144",
+      "nome": "Total"
+    }
+  ]
+}

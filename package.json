@@ -7,7 +7,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "server": "json-server --watch db.json",
+    "webdriver:update": "webdriver-manager update --versions.chrome 103.0.5060.134",
+    "webdriver:status": "webdriver-manager status",
+    "webdriver:start": "webdriver-manager start",
+    "e2e": "ng e2e",
+    "config": "protractor ./e2e/protractor.conf.js"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +24,7 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
+    "json-server": "^0.17.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

@@ -13,7 +13,12 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    'chromeOptions': {
+        binary: 'C:/Program Files (x86)/Google/Chrome/Application/new_chrome.exe',
+        args: [],
+        extensions: [],
+    }
   },
   directConnect: true,
   SELENIUM_PROMISE_MANAGER: false,

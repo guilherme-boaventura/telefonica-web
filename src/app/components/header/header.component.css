@@ -1,0 +1,31 @@
+.header{
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.logo {
+    padding-top: 15px;
+    text-align: center;
+    display: inline-block;
+}
+
+.logo img{
+    height: 40px;
+}
+
+.logo h3{
+    color: #daa520;
+    margin-top: 0;
+}
+
+.nav{
+    display: inline-block;
+    position: absolute;
+    left:0;
+    top:3%;
+    margin-left: 20px;
+}
+
+.nav img{
+    height: 40px;
+}
