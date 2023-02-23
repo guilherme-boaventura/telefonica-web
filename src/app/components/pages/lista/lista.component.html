@@ -1,8 +1,8 @@
 <div cdkDropListGroup>
 
   <div *ngFor="let grupo of grupos">
-    <div [id]="grupo.id" cdkDropList class="grupo">
-
+    <div [id]="grupo.id" cdkDropList class="grupo" >
+        <h2>{{grupo.nome}}</h2>
       <div *ngFor="let plano of planos">
         <div class="dragItem" *ngIf="plano.grupoId == grupo.id" [cdkDragData]="plano.id" cdkDrag>
           <app-card-plano [plano]="plano"></app-card-plano>

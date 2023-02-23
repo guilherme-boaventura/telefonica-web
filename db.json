@@ -24,10 +24,39 @@
     {
       "id": "4",
       "valor": "15",
-      "nome": "Teste",
+      "nome": "Quatro",
+      "cor": "blue",
+      "grupoId": "4"
+    },
+    {
+      "id": "5",
+      "valor": "79",
+      "nome": "Cinco",
+      "cor": "yellow",
+      "grupoId": "1"
+    },
+    {
+      "id": "6",
+      "valor": "99",
+      "nome": "Seis",
+      "cor": "red",
+      "grupoId": "2"
+    },
+    {
+      "id": "7",
+      "valor": "144",
+      "nome": "Sete",
+      "cor": "green",
+      "grupoId": "3"
+    },
+    {
+      "id": "8",
+      "valor": "15",
+      "nome": "Oito",
       "cor": "blue",
       "grupoId": "4"
     }
+    
   ],
 
   "grupos": [
