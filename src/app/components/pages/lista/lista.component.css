@@ -1,0 +1,9 @@
+.grupo {
+    display: inline-block;
+    margin: 20px;
+}
+
+.dragItem {
+    height: 10px;
+    width: 10px;
+}

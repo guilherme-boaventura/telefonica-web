@@ -16,5 +16,9 @@ export class PlanoService {
     return this.http.get<Plano>(this.urlApi+id);
   }
 
+  getAll(): Observable<Plano[]> {
+    return this.http.get<Plano[]>(this.urlApi);
+  }
+
 
 }

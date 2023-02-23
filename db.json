@@ -3,17 +3,49 @@
     {
       "id": "1",
       "valor": "79",
-      "nome": "Start"
+      "nome": "Start",
+      "cor": "yellow",
+      "grupoId": "1"
     },
     {
       "id": "2",
       "valor": "99",
-      "nome": "Mix"
+      "nome": "Mix",
+      "cor": "red",
+      "grupoId": "2"
     },
     {
       "id": "3",
       "valor": "144",
-      "nome": "Total"
+      "nome": "Total",
+      "cor": "green",
+      "grupoId": "3"
+    },
+    {
+      "id": "4",
+      "valor": "15",
+      "nome": "Teste",
+      "cor": "blue",
+      "grupoId": "4"
+    }
+  ],
+
+  "grupos": [
+    {
+      "nome": "pendentes",
+      "id": "1"
+    },
+    {
+      "nome": "grupo 1",
+      "id": "2"
+    },
+    {
+      "nome": "grupo 2",
+      "id": "3"
+    },
+    {
+      "nome": "grupo 3",
+      "id": "4"
     }
   ]
 }

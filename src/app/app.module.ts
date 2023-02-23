@@ -10,6 +10,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NomePlanoComponent } from './components/pages/nome-plano/nome-plano.component';
 import { PlanoService } from './service/plano.service';
+import { ListaComponent } from './components/pages/lista/lista.component';
+import { CardPlanoComponent } from './components/card-plano/card-plano.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PlanoService } from './service/plano.service';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    NomePlanoComponent
+    NomePlanoComponent,
+    ListaComponent,
+    CardPlanoComponent
   ],
   imports: [
     BrowserModule,

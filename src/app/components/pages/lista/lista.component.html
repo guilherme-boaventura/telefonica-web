@@ -1,0 +1,15 @@
+<div cdkDropListGroup>
+
+  <div *ngFor="let grupo of grupos">
+    <div [id]="grupo.id" cdkDropList class="grupo">
+
+      <div *ngFor="let plano of planos">
+        <div class="dragItem" *ngIf="plano.grupoId == grupo.id" [cdkDragData]="plano.id" cdkDrag>
+          <app-card-plano [plano]="plano"></app-card-plano>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
