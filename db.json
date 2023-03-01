@@ -4,77 +4,75 @@
       "id": "1",
       "valor": "79",
       "nome": "Start",
-      "cor": "yellow",
-      "grupoId": "1"
+      "grupoId": 1,
+      "ordem": "0"
     },
     {
       "id": "2",
       "valor": "99",
       "nome": "Mix",
-      "cor": "red",
-      "grupoId": "2"
+      "grupoId": 1,
+      "ordem": "0"
     },
     {
       "id": "3",
       "valor": "144",
       "nome": "Total",
-      "cor": "green",
-      "grupoId": "3"
+      "grupoId": 2,
+      "ordem": "0"
     },
     {
       "id": "4",
       "valor": "15",
       "nome": "Quatro",
-      "cor": "blue",
-      "grupoId": "4"
+      "grupoId": 2,
+      "ordem": "1"
     },
     {
       "id": "5",
       "valor": "79",
       "nome": "Cinco",
-      "cor": "yellow",
-      "grupoId": "1"
+      "grupoId": 3,
+      "ordem": "1"
     },
     {
       "id": "6",
       "valor": "99",
       "nome": "Seis",
-      "cor": "red",
-      "grupoId": "2"
+      "grupoId": 3,
+      "ordem": "1"
     },
     {
       "id": "7",
       "valor": "144",
       "nome": "Sete",
-      "cor": "green",
-      "grupoId": "3"
+      "grupoId": 4,
+      "ordem": "1"
     },
     {
       "id": "8",
       "valor": "15",
       "nome": "Oito",
-      "cor": "blue",
-      "grupoId": "4"
+      "grupoId": 4,
+      "ordem": "1"
     }
-    
   ],
-
   "grupos": [
     {
       "nome": "pendentes",
-      "id": "1"
+      "id": 1
     },
     {
       "nome": "grupo 1",
-      "id": "2"
+      "id": 2
     },
     {
       "nome": "grupo 2",
-      "id": "3"
+      "id": 3
     },
     {
       "nome": "grupo 3",
-      "id": "4"
+      "id": 4
     }
   ]
 }

@@ -12,6 +12,8 @@ import { NomePlanoComponent } from './components/pages/nome-plano/nome-plano.com
 import { PlanoService } from './service/plano.service';
 import { ListaComponent } from './components/pages/lista/lista.component';
 import { CardPlanoComponent } from './components/card-plano/card-plano.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { GrupoComponent } from './components/grupo/grupo.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,11 @@ import { CardPlanoComponent } from './components/card-plano/card-plano.component
     FooterComponent,
     NomePlanoComponent,
     ListaComponent,
-    CardPlanoComponent
+    CardPlanoComponent,
+    GrupoComponent
   ],
   imports: [
+    DragDropModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

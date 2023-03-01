@@ -3,4 +3,5 @@ export interface Plano {
     valor: number;
     nome: String;
     grupoId: number;
+    ordem: number;
 }
