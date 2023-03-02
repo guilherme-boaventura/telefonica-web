@@ -27,7 +27,9 @@ export class PlanoService {
   }
 
   getByGrupo(id: number): Observable<Array<Plano>> {
-    return this.http.get<Array<Plano>>(this.urlApi+"?grupoId="+id);
+    return this.http.get<Array<Plano>>(this.urlApi+"?grupoId="+id+"&_sort=ordem&order=asc");
   }
+
+
 
 }

@@ -39,30 +39,41 @@ export class ListaComponent implements OnInit {
       this.planoService.moverPlano(plano).subscribe(response => {
         plano = response;
       });
-      this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.previousContainer.id))[0]).splice(event.previousIndex, 1, );
-      this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.container.id))[0]).splice(event.currentIndex, 0, plano);
+
+      let containerAnterior = this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.previousContainer.id))[0]);
+      let containerAtual = this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.container.id))[0]);
+
+      let index = containerAnterior.indexOf(plano);
+
+      console.log(event.currentIndex);
+
+      containerAnterior.splice(index, 1);
+      for (let index = 0; index < containerAnterior.length; index++) {
+        containerAnterior[index].ordem = index;
+      }
+      containerAtual.splice(event.currentIndex, 0, plano);
+      for (let index = 0; index < containerAtual.length; index++) {
+        containerAtual[index].ordem = index;
+      }
     }
   }
 
-  organizarGrupo(event : CdkDragSortEvent<Plano>){
-    moveItemInArray(this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.container.id))[0]), event.previousIndex, event.currentIndex);
+  organizarPlanos(event : CdkDragSortEvent<Plano>){
+    let container = this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.container.id))[0]);
+    moveItemInArray(container, event.previousIndex, event.currentIndex);
+
+    for (let index = 0; index < container.length; index++) {
+      container[index].ordem = index;
+      this.planoService.moverPlano(container[index]).subscribe(response => container[index] = response);
+    }
   }
-  
-  reordenar(event: CdkDragDrop<string[]>) {
-    let grupo : Grupo = this.grupos.filter(grupo => grupo.id == Number(event.container.id))[0];
-    if(event.previousContainer === event.container){
-      moveItemInArray(this.grupoPlanos.get(grupo), event.previousIndex,event.currentIndex);
-    }else{
-      let grupoAnterior : Grupo = this.grupos.filter(grupo => grupo.id == Number(event.previousContainer.id))[0];
-      let index = this.grupoPlanos.get(grupoAnterior).indexOf(event.item.data);
-      this.grupoPlanos.get(grupoAnterior).splice(index,1);
 
-      console.log(this.grupoPlanos.get(grupo)[0]);
+  organizarGrupos(event : CdkDragSortEvent<Grupo>){
+    moveItemInArray(this.grupos, event.previousIndex, event.currentIndex);
 
-      index = this.grupoPlanos.get(grupo).indexOf(event.item.data);
-      this.grupoPlanos.get(grupo);
-      
-      console.log(this.grupoPlanos.get(grupo)[0]);
+    for (let index = 0; index < this.grupos.length; index++) {
+      this.grupos[index].ordem = index;
+      this.grupoService.moverGrupo(this.grupos[index]).subscribe(response => this.grupos[index] = response);
     }
   }
 }
