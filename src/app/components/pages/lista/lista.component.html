@@ -1,11 +1,8 @@
-<div cdkDropList (cdkDropListSorted)="organizarGrupos($event)" class="lista-grupos">
+<div cdkDropList (cdkDropListDropped)="organizarGrupos($event)" class="lista-grupos">
   <div cdkDropListGroup>
 
     <div *ngFor="let grupo of grupos">
-      <div cdkDrag [cdkDragData]="grupo">
-        <div class="placeholder" *cdkDragPlaceholder ></div>
-        <app-grupo [grupo]="grupo" [planos]='grupoPlanos.get(grupo)' (onDrop)="dropPlano($event)" (onSort)="organizarPlanos($event)"></app-grupo>  
-      </div>
+        <app-grupo [grupo]="grupo" [planos]='grupoPlanos.get(grupo)' (onDrop)="dropPlano($event)"></app-grupo>
     </div>
 
   </div>

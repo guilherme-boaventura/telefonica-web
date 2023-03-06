@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Grupo } from 'src/app/Grupo';
 import { GrupoService } from 'src/app/service/grupo.service';
-import { CdkDragDrop, CdkDragSortEvent, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { PlanoService } from 'src/app/service/plano.service';
 import { Plano } from 'src/app/Plano';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-lista',
@@ -13,7 +14,6 @@ import { Plano } from 'src/app/Plano';
 export class ListaComponent implements OnInit {
 
   grupoPlanos : Map<Grupo, Plano[]> = new Map<Grupo, Plano[]>();
-  planos : Plano[] = [];
   grupos !: Grupo[];
  
   constructor(private planoService : PlanoService, private grupoService : GrupoService) { }
@@ -22,43 +22,45 @@ export class ListaComponent implements OnInit {
     this.grupoService.getAll().subscribe((grupos) => {
       this.grupos = grupos;
       grupos.forEach(grupo => {
-        let planos : Plano[];
-        this.planoService.getByGrupo(grupo.id).subscribe(retornado => {
-          planos = retornado;
-          this.planos = this.planos.concat(planos);
+        this.planoService.getByGrupo(grupo.id).subscribe(planos => {
           this.grupoPlanos.set(grupo, planos);
         });
       });
     });
   }
   
-  dropPlano(event : CdkDragDrop<Grupo>) {
+  dropPlano(event : CdkDragDrop<Plano>) {
     if(event.previousContainer !== event.container){
       let plano : Plano = event.item.data;
       plano.grupoId = parseInt(event.container.id);
       this.planoService.moverPlano(plano).subscribe(response => {
         plano = response;
       });
-
+     
       let containerAnterior = this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.previousContainer.id))[0]);
       let containerAtual = this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.container.id))[0]);
+      
+      transferArrayItem(containerAnterior, containerAtual, event.previousIndex, event.currentIndex);
 
-      let index = containerAnterior.indexOf(plano);
-
-      console.log(event.currentIndex);
-
-      containerAnterior.splice(index, 1);
       for (let index = 0; index < containerAnterior.length; index++) {
         containerAnterior[index].ordem = index;
+        this.planoService.moverPlano(containerAnterior[index]).subscribe(response => {
+          plano = response;
+        });
       }
-      containerAtual.splice(event.currentIndex, 0, plano);
+
       for (let index = 0; index < containerAtual.length; index++) {
         containerAtual[index].ordem = index;
+        this.planoService.moverPlano(containerAtual[index]).subscribe(response => {
+          plano = response;
+        });
       }
+    }else{
+      this.organizarPlanos(event);
     }
   }
 
-  organizarPlanos(event : CdkDragSortEvent<Plano>){
+  organizarPlanos(event : CdkDragDrop<Plano>){
     let container = this.grupoPlanos.get(this.grupos.filter(grupo => grupo.id == Number(event.container.id))[0]);
     moveItemInArray(container, event.previousIndex, event.currentIndex);
 
@@ -68,12 +70,16 @@ export class ListaComponent implements OnInit {
     }
   }
 
-  organizarGrupos(event : CdkDragSortEvent<Grupo>){
+  organizarGrupos(event : CdkDragDrop<Grupo>){
     moveItemInArray(this.grupos, event.previousIndex, event.currentIndex);
+    
+    let index = 0;
+    for (let grupo of this.grupoPlanos.keys()){
+      grupo = this.grupos[index];
+      grupo.ordem = index;
 
-    for (let index = 0; index < this.grupos.length; index++) {
-      this.grupos[index].ordem = index;
-      this.grupoService.moverGrupo(this.grupos[index]).subscribe(response => this.grupos[index] = response);
+      this.grupoService.moverGrupo(grupo).subscribe(response => grupo  = response);
+      index++;
     }
   }
 }
