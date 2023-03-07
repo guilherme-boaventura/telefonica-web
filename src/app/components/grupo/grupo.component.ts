@@ -23,9 +23,4 @@ export class GrupoComponent implements OnInit {
   onDropItem(event: CdkDragDrop<Plano>) {
     this.onDrop.emit(event);
   }
-
-  organizarGrupo(event : CdkDragSortEvent<Plano>) {
-    this.onSort.emit(event);
-  }
-
 }

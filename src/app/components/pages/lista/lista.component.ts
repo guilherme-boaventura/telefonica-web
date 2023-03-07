@@ -4,7 +4,6 @@ import { GrupoService } from 'src/app/service/grupo.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { PlanoService } from 'src/app/service/plano.service';
 import { Plano } from 'src/app/Plano';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-lista',
@@ -45,14 +44,14 @@ export class ListaComponent implements OnInit {
       for (let index = 0; index < containerAnterior.length; index++) {
         containerAnterior[index].ordem = index;
         this.planoService.moverPlano(containerAnterior[index]).subscribe(response => {
-          plano = response;
+          containerAnterior[index] = response;
         });
       }
 
       for (let index = 0; index < containerAtual.length; index++) {
         containerAtual[index].ordem = index;
         this.planoService.moverPlano(containerAtual[index]).subscribe(response => {
-          plano = response;
+          containerAtual[index] = response;
         });
       }
     }else{
