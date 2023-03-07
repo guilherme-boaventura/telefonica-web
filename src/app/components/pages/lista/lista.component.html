@@ -1,8 +1,7 @@
-
-<div cdkDropList (cdkDropListDropped)="organizarGrupos($event)">
-  <div cdkDropListGroup>
-    <div class="grupo" *ngFor="let grupo of grupos">
-      <app-grupo [grupo]="grupo" [planos]="grupoPlanos.get(grupo)" (onDrop)="dropPlano($event)"></app-grupo>
+<div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="organizarGrupos($event)">
+  <div class="row" cdkDropListGroup>
+    <div class="col-3" *ngFor="let grupo of grupos">
+        <app-grupo [grupo]="grupo" [planos]="grupoPlanos.get(grupo)" (onDrop)="dropPlano($event)"></app-grupo>
     </div>
   </div>
 </div>

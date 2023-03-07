@@ -4,8 +4,11 @@
     margin-right: 200px;
     width: fit-content;
     max-height: 100%;
-    min-height: 50px;
+    min-height: 80px;
+    min-width: 150px;
+    max-width: 200px;
     padding-bottom: 40px;
+    text-align: center;
 }
 
 .placeholder {

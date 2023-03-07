@@ -18,14 +18,14 @@
       "id": "3",
       "valor": "144",
       "nome": "Total",
-      "grupoId": 2,
+      "grupoId": 0,
       "ordem": 0
     },
     {
       "id": "4",
       "valor": "15",
       "nome": "Quatro",
-      "grupoId": 2,
+      "grupoId": 0,
       "ordem": 1
     },
     {
@@ -46,36 +46,36 @@
       "id": "7",
       "valor": "144",
       "nome": "Sete",
-      "grupoId": 4,
+      "grupoId": 2,
       "ordem": 0
     },
     {
       "id": "8",
       "valor": "15",
       "nome": "Oito",
-      "grupoId": 4,
+      "grupoId": 2,
       "ordem": 1
     }
   ],
   "grupos": [
     {
       "nome": "pendentes",
-      "id": 1,
+      "id": 0,
       "ordem": 0
     },
     {
       "nome": "grupo 1",
-      "id": 2,
+      "id": 1,
       "ordem": 1
     },
     {
       "nome": "grupo 2",
-      "id": 3,
+      "id": 2,
       "ordem": 2
     },
     {
       "nome": "grupo 3",
-      "id": 4,
+      "id": 3,
       "ordem": 3
     }
   ]
