@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -39,9 +40,11 @@ import { PopUpComponent } from './components/pop-up/pop-up.component';
     FormsModule,
     MatIconModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [{provide: PlanoService, deps: [HttpClient]}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PopUpComponent]
 })
 export class AppModule { }
