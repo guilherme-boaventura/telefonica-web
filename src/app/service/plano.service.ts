@@ -25,11 +25,18 @@ export class PlanoService {
   getAll(): Observable<Plano[]> {
     return this.http.get<Plano[]>(this.urlApi);
   }
+  
+  getAllSortedById(): Observable<Plano[]> {
+    return this.http.get<Plano[]>(this.urlApi+"?_sort=id");
+  }
 
   getByGrupo(id: number): Observable<Array<Plano>> {
     return this.http.get<Array<Plano>>(this.urlApi+"?grupoId="+id+"&_sort=ordem&order=asc");
   }
 
-
+  postPlano(nome : String, valor : number, grupoId : number, ordem : number, id : number) {
+    let plano = new Plano(id, valor, nome, grupoId, ordem);
+    return this.http.post<Plano>(this.urlApi, plano);
+  }
 
 }

@@ -81,4 +81,23 @@ export class ListaComponent implements OnInit {
       index++;
     }
   }
+
+  adicionarTarefa(planoNovo : Plano) {
+    this.grupoService.getById(planoNovo.grupoId).subscribe(response => {
+      this.grupoPlanos.get(response).push(planoNovo);
+    });
+  }
+
+  cadastrarGrupo() {
+    let nome = prompt("Nome do grupo:");
+    let ordem = this.grupos.length;
+    this.grupoService.getAllSortedById().subscribe(response => {
+      let id : number = response[response.length-1].id;
+      id++;
+      this.grupoService.postGrupo(nome,ordem,id).subscribe(response => { 
+        this.grupos.push(response);
+        this.grupoPlanos.set(response, []);
+      });
+    });    
+  }
 }

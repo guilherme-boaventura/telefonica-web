@@ -1,7 +1,10 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Grupo } from 'src/app/Grupo';
 import { Plano } from 'src/app/Plano';
-import { CdkDragDrop, CdkDragSortEvent } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { PlanoService } from 'src/app/service/plano.service';
+import { MatDialog } from '@angular/material/dialog'
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-grupo',
@@ -14,13 +17,29 @@ export class GrupoComponent implements OnInit {
   @Input() planos !: Plano[];
   @Output() onDrop : EventEmitter<any> = new EventEmitter<any>();
   @Output() onSort : EventEmitter<any> = new EventEmitter<any>();
+  @Output() onCadastro : EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private planoService : PlanoService, private popup : MatDialog) { }
 
   ngOnInit(): void {
   }
 
   onDropItem(event: CdkDragDrop<Plano>) {
     this.onDrop.emit(event);
+  }
+
+  cadastrarPlano() {
+    let nome = prompt("Nome do plano:");
+    let valor = Number(prompt("Valor do plano:"));
+    let grupoId = this.grupo.id;
+    let ordem = this.planos.length;
+    this.planoService.getAllSortedById().subscribe(response => {
+      let id : number = response[response.length-1].id;
+      id++;
+      this.planoService.postPlano(nome,valor,grupoId,ordem,id).subscribe(response => { 
+        this.planos.push(response);
+        this.onCadastro.emit(response);
+      });
+    });
   }
 }

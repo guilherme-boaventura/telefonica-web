@@ -16,8 +16,21 @@ export class GrupoService {
     return this.http.get<Grupo[]>(this.urlApi+"?_sort=ordem");
   }
 
+  getById(id: number): Observable<Grupo> {
+    return this.http.get<Grupo>(this.urlApi+"/"+id);
+  }
+
   moverGrupo(grupo : Grupo): Observable<Grupo> {
     let headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.http.put<Grupo>(this.urlApi+"/"+grupo.id, grupo, {headers : headers});
+  }
+
+  getAllSortedById(): Observable<Grupo[]> {
+    return this.http.get<Grupo[]>(this.urlApi+"?_sort=id");
+  }
+
+  postGrupo(nome : String, ordem : number, id : number) {
+    let grupo = new Grupo(id, nome, ordem);
+    return this.http.post<Grupo>(this.urlApi, grupo);
   }
 }

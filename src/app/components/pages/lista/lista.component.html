@@ -1,7 +1,17 @@
-<div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="organizarGrupos($event)">
-  <div class="row" cdkDropListGroup>
+<div  cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="organizarGrupos($event)">
+
+  <div class="row wrapper" cdkDropListGroup>
+
     <div class="col-3" *ngFor="let grupo of grupos">
-        <app-grupo [grupo]="grupo" [planos]="grupoPlanos.get(grupo)" (onDrop)="dropPlano($event)"></app-grupo>
+        <app-grupo (onCadastro)="adicionarTarefa($planoNovo)" [grupo]="grupo" [planos]="grupoPlanos.get(grupo)" (onDrop)="dropPlano($event)"></app-grupo>
     </div>
+
   </div>
+
+</div>
+
+<div class="button-container">
+  <button (click)="cadastrarGrupo()" style="border-radius: 20px;" mat-mini-fab color="accent">
+    Novo Grupo
+  </button>
 </div>

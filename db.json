@@ -4,56 +4,56 @@
       "id": "1",
       "valor": "79",
       "nome": "Start",
-      "grupoId": 1,
+      "grupoId": 0,
       "ordem": 0
     },
     {
       "id": "2",
       "valor": "99",
       "nome": "Mix",
-      "grupoId": 1,
+      "grupoId": 0,
       "ordem": 1
     },
     {
       "id": "3",
       "valor": "144",
       "nome": "Total",
-      "grupoId": 0,
+      "grupoId": 1,
       "ordem": 0
     },
     {
       "id": "4",
       "valor": "15",
       "nome": "Quatro",
-      "grupoId": 0,
+      "grupoId": 1,
       "ordem": 1
     },
     {
       "id": "5",
       "valor": "79",
       "nome": "Cinco",
-      "grupoId": 3,
+      "grupoId": 2,
       "ordem": 0
     },
     {
       "id": "6",
       "valor": "99",
       "nome": "Seis",
-      "grupoId": 3,
+      "grupoId": 2,
       "ordem": 1
     },
     {
       "id": "7",
       "valor": "144",
       "nome": "Sete",
-      "grupoId": 2,
+      "grupoId": 3,
       "ordem": 0
     },
     {
       "id": "8",
       "valor": "15",
       "nome": "Oito",
-      "grupoId": 2,
+      "grupoId": 3,
       "ordem": 1
     }
   ],
