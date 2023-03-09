@@ -1,6 +1,5 @@
 import {
   ComponentFixture,
-  ComponentFixtureAutoDetect,
   TestBed,
   waitForAsync
 } from '@angular/core/testing';
@@ -14,7 +13,6 @@ import { AppComponent } from 'src/app/app.component';
 import { FooterComponent } from '../../footer/footer.component';
 import { HeaderComponent } from '../../header/header.component';
 import { LoginComponent } from '../login/login.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('NomePlanoComponent', () => {
   let component: NomePlanoComponent;
@@ -30,7 +28,7 @@ describe('NomePlanoComponent', () => {
         NomePlanoComponent
       ],
       imports: [BrowserModule, HttpClientModule, FormsModule],
-        providers: [{ provide : PlanoService }, {provide : ComponentFixtureAutoDetect, useValue : true}]
+        providers: [{ provide : PlanoService }]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NomePlanoComponent);
@@ -39,36 +37,33 @@ describe('NomePlanoComponent', () => {
     component.ngOnInit();
   });
 
-  it('Deve retornar Total', waitForAsync(async () => {
+  it('Deve retornar Total', waitForAsync(() => {
     const html = fixture.debugElement;
     const entrada = html.query(By.css('#entrada'));
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
     expect(entrada).toBeTruthy();
-  
-    entrada.triggerEventHandler('input', {target : {value : '3'}});
-    
-    fixture.detectChanges();
 
-    console.log(component.id + " - depois");
+  
+    entrada.triggerEventHandler('input', {target : {value : 3}});
 
     fixture.whenStable().then(async () => {
 
-      expect(html.query(By.css('#nome-plano'))).not.toBeTruthy;
+    expect(html.query(By.css('#nome-plano'))).not.toBeTruthy();
 
-      const botao = html.query(By.css('button'));
-      botao.triggerEventHandler('click', null);
+    const botao = html.query(By.css('button'));
 
-      await sleep(1000);
+    botao.triggerEventHandler('click', null);
+    
+    await sleep(2000);
+    
+    fixture.detectChanges();
+    
+    expect(html.query(By.css('#nome-plano'))).toBeTruthy();
 
-      fixture.detectChanges();
-
-      expect(html.query(By.css('#nome-plano'))).toBeTruthy;
-
-      const nomePlano = html.query(By.css('#nome-plano')).nativeElement as HTMLElement;
-
-      expect(nomePlano).toBeTruthy();
-      expect(nomePlano.innerText).toContain('Total');
+    const nomePlano = html.query(By.css('#nome-plano')).nativeElement as HTMLElement;
+    expect(nomePlano).toBeTruthy();
+    expect(nomePlano.innerText).toContain('Total');
     });
   }));
 });

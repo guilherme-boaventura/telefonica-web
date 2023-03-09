@@ -1,0 +1,23 @@
+.container {
+    min-height: 300px;
+    min-width: 500px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.campo {
+    margin-bottom: 10px;
+}
+
+.form-container {
+    padding-left: 13px;
+}
+
+.botao-container {
+    display: flex;
+    justify-content: center;
+}

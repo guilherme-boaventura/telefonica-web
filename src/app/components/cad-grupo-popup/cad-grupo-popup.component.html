@@ -1,0 +1,24 @@
+<div class="container">
+
+    <mat-dialog-content>
+        
+        <div style="text-align: center;" class="row">
+            <h1>Novo Plano</h1>
+        </div>
+
+        <div class="form-container">
+        
+            <div class="row campo">
+                <mat-form-field class="col" appearance="fill">
+                    <input matInput [(ngModel)]="nome" placeholder="Nome">
+                </mat-form-field>
+            </div> 
+
+        </div>
+
+        <div class="botao-container">
+            <button (click)="criarGrupo()" mat-stroked-button>Criar</button>
+        </div>
+    </mat-dialog-content>
+
+</div>

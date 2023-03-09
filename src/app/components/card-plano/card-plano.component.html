@@ -1,0 +1,6 @@
+<div class="dragItem" cdkDrag [cdkDragData]="plano" (cdkDragDropped)="onDropItem($event)">
+  <div class="placeholder" *cdkDragPlaceholder ></div>
+  <div class="container">
+    {{plano.nome}}
+  </div>
+</div>

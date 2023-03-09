@@ -10,6 +10,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NomePlanoComponent } from './components/pages/nome-plano/nome-plano.component';
 import { PlanoService } from './service/plano.service';
+import { ListaComponent } from './components/pages/lista/lista.component';
+import { CardPlanoComponent } from './components/card-plano/card-plano.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { GrupoComponent } from './components/grupo/grupo.component';
+import { PopUpComponent } from './components/pop-up/pop-up.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CadGrupoPopupComponent } from './components/cad-grupo-popup/cad-grupo-popup.component'
 
 @NgModule({
   declarations: [
@@ -17,15 +28,27 @@ import { PlanoService } from './service/plano.service';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    NomePlanoComponent
+    NomePlanoComponent,
+    ListaComponent,
+    CardPlanoComponent,
+    GrupoComponent,
+    PopUpComponent,
+    CadGrupoPopupComponent
   ],
   imports: [
+    DragDropModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [{provide: PlanoService, deps: [HttpClient]}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PopUpComponent]
 })
 export class AppModule { }

@@ -18,7 +18,6 @@ export class NomePlanoComponent implements OnInit {
   plano !: Plano;
 
   obterPlano() {
-    console.log(this.id + " - NO METODO");
       this.planoService.getById(this.id).subscribe((plano) => (this.plano = plano));
   }
 
