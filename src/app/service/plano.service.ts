@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PlanoService {
   
 
-  private urlApi = 'http://localhost:3000/planos';
+  private urlApi = 'http://localhost:3013/planos';
 
   constructor(private http: HttpClient) { }
 

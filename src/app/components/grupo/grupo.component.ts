@@ -29,32 +29,22 @@ export class GrupoComponent implements OnInit {
   }
 
   cadastrarPlano() {
-    let dialogRef = this.popup.open(PopUpComponent, {width:'600px', height: '600px'});
-    let nome = dialogRef.componentInstance.nome;
-    let valor = dialogRef.componentInstance.valor;
-    let grupoId = this.grupo.id;
-    let ordem = this.planos.length;
+    let dialogRef = this.popup.open(PopUpComponent);
 
-    this.planoService.getAllSortedById().subscribe(response => {
-      let id : number = response[response.length-1].id;
-      id++;
-      this.planoService.postPlano(nome,valor,grupoId,ordem,id).subscribe(response => { 
+    dialogRef.afterClosed().subscribe(resp => {
+      let nome = dialogRef.componentInstance.nome;
+      let valor = dialogRef.componentInstance.valor;
+      let grupoId = this.grupo.id;
+      let ordem = this.planos.length;
+
+      this.planoService.getAllSortedById().subscribe(response => {
+        let id : number = response[response.length-1].id;
+        id++;
+        this.planoService.postPlano(nome,valor,grupoId,ordem,id).subscribe(response => { 
         this.planos.push(response);
         this.onCadastro.emit(response);
       });
     });
-    /*
-    let nome = prompt("Nome do plano:");
-    let valor = Number(prompt("Valor do plano:"));
-    let grupoId = this.grupo.id;
-    let ordem = this.planos.length;
-    this.planoService.getAllSortedById().subscribe(response => {
-      let id : number = response[response.length-1].id;
-      id++;
-      this.planoService.postPlano(nome,valor,grupoId,ordem,id).subscribe(response => { 
-        this.planos.push(response);
-        this.onCadastro.emit(response);
-      });
-    });*/ 
+    });
   }
 }

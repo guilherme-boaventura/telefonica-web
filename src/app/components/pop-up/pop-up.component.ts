@@ -8,8 +8,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class PopUpComponent implements OnInit {
 
-  onCadastroPlano : EventEmitter<any> = new EventEmitter<any>();
-
   nome !: String;
   valor !: number;
 

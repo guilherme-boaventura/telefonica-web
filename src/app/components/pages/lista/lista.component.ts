@@ -4,6 +4,8 @@ import { GrupoService } from 'src/app/service/grupo.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { PlanoService } from 'src/app/service/plano.service';
 import { Plano } from 'src/app/Plano';
+import { MatDialog } from '@angular/material/dialog';
+import { CadGrupoPopupComponent } from '../../cad-grupo-popup/cad-grupo-popup.component';
 
 @Component({
   selector: 'app-lista',
@@ -15,7 +17,7 @@ export class ListaComponent implements OnInit {
   grupoPlanos : Map<Grupo, Plano[]> = new Map<Grupo, Plano[]>();
   grupos !: Grupo[];
  
-  constructor(private planoService : PlanoService, private grupoService : GrupoService) { }
+  constructor(private planoService : PlanoService, private grupoService : GrupoService, public popup : MatDialog) { }
 
   ngOnInit(): void {
     this.grupoService.getAll().subscribe((grupos) => {
@@ -89,15 +91,22 @@ export class ListaComponent implements OnInit {
   }
 
   cadastrarGrupo() {
-    let nome = prompt("Nome do grupo:");
-    let ordem = this.grupos.length;
-    this.grupoService.getAllSortedById().subscribe(response => {
-      let id : number = response[response.length-1].id;
-      id++;
-      this.grupoService.postGrupo(nome,ordem,id).subscribe(response => { 
-        this.grupos.push(response);
-        this.grupoPlanos.set(response, []);
-      });
-    });    
+    let dialogRef = this.popup.open(CadGrupoPopupComponent);
+
+    dialogRef.afterClosed().subscribe(resp => {
+      let nome = dialogRef.componentInstance.nome;
+      let ordem = this.grupos.length;
+      this.grupoService.getAllSortedById().subscribe(response => {
+        let id : number = response[response.length-1].id;
+        id++;
+        this.grupoService.postGrupo(nome,ordem,id).subscribe(response => { 
+          this.grupos.push(response);
+          this.grupoPlanos.set(response, []);
+        });
+      });   
+    });
+
+
+     
   }
 }

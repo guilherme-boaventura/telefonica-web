@@ -8,7 +8,7 @@ import { Grupo } from '../Grupo';
 })
 export class GrupoService {
 
-  private urlApi = 'http://localhost:3000/grupos';
+  private urlApi = 'http://localhost:3013/grupos';
 
   constructor(private http: HttpClient) { }
 

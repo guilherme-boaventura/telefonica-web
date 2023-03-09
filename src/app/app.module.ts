@@ -14,11 +14,13 @@ import { ListaComponent } from './components/pages/lista/lista.component';
 import { CardPlanoComponent } from './components/card-plano/card-plano.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CadGrupoPopupComponent } from './components/cad-grupo-popup/cad-grupo-popup.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     ListaComponent,
     CardPlanoComponent,
     GrupoComponent,
-    PopUpComponent
+    PopUpComponent,
+    CadGrupoPopupComponent
   ],
   imports: [
     DragDropModule,
@@ -41,7 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     MatIconModule,
     MatFormFieldModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [{provide: PlanoService, deps: [HttpClient]}],
   bootstrap: [AppComponent],
