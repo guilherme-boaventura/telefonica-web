@@ -55,6 +55,48 @@
       "nome": "Oito",
       "grupoId": 3,
       "ordem": 1
+    },
+    {
+      "id": 9,
+      "valor": "15",
+      "nome": "Nove",
+      "grupoId": 4,
+      "ordem": 0
+    },
+    {
+      "id": 10,
+      "valor": "20",
+      "nome": "Dez",
+      "grupoId": 4,
+      "ordem": 1
+    },
+    {
+      "id": 11,
+      "valor": "25",
+      "nome": "Onze",
+      "grupoId": 5,
+      "ordem": 0
+    },
+    {
+      "id": 12,
+      "valor": "30",
+      "nome": "Doze",
+      "grupoId": 5,
+      "ordem": 1
+    },
+    {
+      "id": 13,
+      "valor": "35",
+      "nome": "Treze",
+      "grupoId": 6,
+      "ordem": 0
+    },
+    {
+      "id": 14,
+      "valor": "40",
+      "nome": "Quatorze",
+      "grupoId": 6,
+      "ordem": 1
     }
   ],
   "grupos": [
@@ -77,6 +119,21 @@
       "nome": "grupo 3",
       "id": 3,
       "ordem": 3
+    },
+    {
+      "id": 4,
+      "nome": "grupo 4",
+      "ordem": 4
+    },
+    {
+      "id": 5,
+      "nome": "grupo 5",
+      "ordem": 5
+    },
+    {
+      "id": 6,
+      "nome": "grupo 6",
+      "ordem": 6
     }
   ]
 }

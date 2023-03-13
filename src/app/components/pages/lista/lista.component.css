@@ -6,6 +6,7 @@
 .page-wrapper {
     height: 80vh;
     min-height: 80vh;
+    margin-top: 20px;
 }
 
 .scroll-view {
@@ -13,4 +14,7 @@
     flex-wrap: nowrap;
     height: 43rem;
     min-height: 43rem;
+    border: 1px solid;
+    border-radius: 0px;
+    border-color: rgba(0, 0, 0, 0.411);
 }
